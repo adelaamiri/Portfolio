@@ -1,24 +1,25 @@
 import { motion } from "framer-motion";
-import aboutImg from "../assets/about.svg";
 
 const About = () => {
   return (
     <section
       id="about"
-      className="bg-bgDark py-32 px-[10%]
+      className="bg-bgDark py-24 md:py-32
+      px-[6%] md:px-[10%]
       flex flex-col gap-20"
     >
-      <div className="flex items-center justify-between">
-        {/* TEXT */}
+      <div className="flex flex-col md:flex-row items-start justify-between gap-16">
+        {/* ABOUT TEXT */}
         <motion.div
           initial={{ x: -80, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="text-center md:text-left"
         >
-          <h2 className="text-4xl text-accent mb-8">About Me</h2>
+          <h2 className="text-3xl md:text-4xl text-accent mb-8">About Me</h2>
 
-          <p className="text-white max-w-md leading-7">
+          <p className="text-white max-w-md leading-7 mx-auto md:mx-0">
             I am a passionate and detail-oriented UI/UX Designer and Frontend
             Developer from Afghanistan, with a deep interest in crafting digital
             experiences that are both beautiful and functional. With a strong
@@ -36,15 +37,17 @@ const About = () => {
           </p>
         </motion.div>
 
+        {/* EDUCATION */}
         <motion.div
-          initial={{ x: -80, opacity: 0 }}
+          initial={{ x: 80, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="text-center md:text-left"
         >
-          <h2 className="text-4xl text-accent mb-8">Education</h2>
+          <h2 className="text-3xl md:text-4xl text-accent mb-8">Education</h2>
 
-          <p className="text-white max-w-md leading-7">
+          <p className="text-white max-w-md leading-7 mx-auto md:mx-0">
             I successfully completed my school education and studied two
             semesters of Computer Science at Allama University. Unfortunately,
             due to the current situation in Afghanistan, I was unable to
