@@ -65,14 +65,14 @@ const Contact = () => {
           {/* SOCIAL */}
           <div className="flex gap-6 text-xl">
             <a
-              href="https://github.com/"
+              href="https://github.com/adelaamiri"
               target="_blank"
               className="w-11 h-11 bg-black text-white rounded-full flex items-center justify-center hover:scale-110 transition"
             >
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="www.linkedin.com/in/adela-amiri"
               target="_blank"
               className="w-11 h-11 bg-[#0A66C2] text-white rounded-full flex items-center justify-center hover:scale-110 transition"
             >
