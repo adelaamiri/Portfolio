@@ -2,25 +2,32 @@ import { motion } from "framer-motion";
 import realEstate from "../assets/realestate.svg";
 import furniture from "../assets/Furniture.svg";
 import courses from "../assets/Courses.svg";
+import { FaFigma } from "react-icons/fa";
 
 const projects = [
   {
     title: "Real Estate",
     image: realEstate,
+    figma:
+      "https://www.figma.com/design/vWO8j7iXWWE9hi2bXVaY5K/Untitled?node-id=0-1&t=AFl7xCyEQz1coj1P-1",
   },
   {
     title: "FURNITURE",
     image: furniture,
+    figma:
+      "https://www.figma.com/design/vWO8j7iXWWE9hi2bXVaY5K/Untitled?node-id=0-1&t=AFl7xCyEQz1coj1P-1",
   },
   {
     title: "COURSES",
     image: courses,
+    figma:
+      "https://www.figma.com/design/vWO8j7iXWWE9hi2bXVaY5K/Untitled?node-id=0-1&t=AFl7xCyEQz1coj1P-1",
   },
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-bgDark py-32 px-[10%]">
+    <section id="projects" className="bg-bgDark py-32 px-[6%] md:px-[10%]">
       {/* Title */}
       <h2 className="text-4xl text-accent text-center mb-20">Projects</h2>
 
@@ -35,14 +42,23 @@ const Projects = () => {
             viewport={{ once: true }}
             className="bg-[#B7C6C4] rounded-2xl overflow-hidden shadow-lg"
           >
-            {/* Image with scroll */}
-            <div className="h-[420px] overflow-y-auto">
+            {/* Image with hidden scrollbar */}
+            <div className="h-[420px] overflow-y-auto scrollbar-hide">
               <img src={project.image} alt={project.title} className="w-full" />
             </div>
 
             {/* Footer */}
-            <div className="bg-[#cac9c9] px-6 py-4">
+            <div className="bg-[#cac9c9] px-6 py-4 flex items-center justify-between">
               <h3 className="text-primary font-medium">{project.title}</h3>
+
+              <a
+                href={project.figma}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0F3F3A] text-xl hover:scale-110 transition"
+              >
+                <FaFigma />
+              </a>
             </div>
           </motion.div>
         ))}
@@ -53,13 +69,12 @@ const Projects = () => {
         <a
           href="https://www.figma.com/design/vWO8j7iXWWE9hi2bXVaY5K/Untitled?node-id=0-1&t=AFl7xCyEQz1coj1P-1"
           target="_blank"
-          className="
-            bg-white/30 backdrop-blur-lg
-            px-8 py-3 rounded-full
-            text-accent shadow-md
-          "
+          rel="noopener noreferrer"
+          className="bg-white/30 backdrop-blur-lg
+          px-8 py-3 rounded-full
+          text-accent shadow-md"
         >
-          See More
+          See More my projects
         </a>
       </div>
     </section>
