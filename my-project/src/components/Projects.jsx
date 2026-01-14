@@ -28,34 +28,32 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" className="bg-bgDark py-32 px-[6%] md:px-[10%]">
-      {/* Title */}
       <h2 className="text-4xl text-accent text-center mb-20">Projects</h2>
 
-      {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
         {projects.map((project, i) => (
           <motion.div
             key={i}
             initial={{ y: 60, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: i * 0.1 }}
+            transition={{ duration: 0.75, delay: i * 0.08 }}
             viewport={{ once: true }}
-            className="bg-[#B7C6C4] rounded-2xl overflow-hidden shadow-lg"
+            whileHover={{ y: -6, scale: 1.01 }}
+            className="bg-white/15 backdrop-blur-2xl border border-white/20 rounded-3xl overflow-hidden shadow-soft glass-shine"
           >
-            {/* Image with hidden scrollbar */}
             <div className="h-[420px] overflow-y-auto scrollbar-hide">
               <img src={project.image} alt={project.title} className="w-full" />
             </div>
 
-            {/* Footer */}
-            <div className="bg-[#cac9c9] px-6 py-4 flex items-center justify-between">
-              <h3 className="text-primary font-medium">{project.title}</h3>
+            <div className="bg-white/15 px-6 py-4 flex items-center justify-between">
+              <h3 className="text-white font-medium">{project.title}</h3>
 
               <a
                 href={project.figma}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#0F3F3A] text-xl hover:scale-110 transition"
+                className="text-accent text-xl hover:scale-110 transition"
+                aria-label="Open Figma"
               >
                 <FaFigma />
               </a>
@@ -64,15 +62,13 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* See More Button */}
       <div className="flex justify-center">
         <a
           href="https://www.figma.com/design/vWO8j7iXWWE9hi2bXVaY5K/Untitled?node-id=0-1&t=AFl7xCyEQz1coj1P-1"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white/30 backdrop-blur-lg
-          px-8 py-3 rounded-full
-          text-accent shadow-md"
+          className="bg-white/20 backdrop-blur-2xl border border-white/25
+          px-8 py-3 rounded-full text-accent shadow-soft hover:scale-105 transition glass-shine"
         >
           See More my projects
         </a>

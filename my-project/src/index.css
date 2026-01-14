@@ -4,12 +4,61 @@
 
 html {
   scroll-behavior: smooth;
-  /* Hide scrollbar but keep scroll */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+}
+
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle noise overlay */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+}
+
+/* Premium shine hover */
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+.glass-shine::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.22),
+    transparent 60%
+  );
+  transform: translateX(-60%);
+  transition: transform 0.7s ease;
+}
+.glass-shine:hover::after {
+  transform: translateX(60%);
+}
+
+/* Soft floating motion */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
   }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  50% {
+    transform: translateY(14px);
   }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+.animate-floatSlow {
+  animation: float 10s ease-in-out infinite;
 }

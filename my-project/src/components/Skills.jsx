@@ -17,8 +17,9 @@ const iconBox =
    transition transform hover:scale-110";
 
 /* Glass Card */
+// فقط این خط را تغییر بده:
 const glassCard =
-  "bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-xl";
+  "bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-xl glass-shine";
 
 const Skills = () => {
   return (

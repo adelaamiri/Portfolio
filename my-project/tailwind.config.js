@@ -4,12 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        bgLight: "#AFC1BE", // بک‌گروند بالا + Skills
-        bgDark: "#3F6E6E", // بک‌گروند About
-        primary: "#1F6F6B", // متن اصلی
-        accent: "#C7965B", // رنگ نام
+        bgLight: "#AFC1BE",
+        bgDark: "#3F6E6E",
+        primary: "#1F6F6B",
+        accent: "#C7965B",
         textDark: "#0F2F2E",
-        iconBg: "#7F9FA0", // مربع آیکن‌ها
+        iconBg: "#7F9FA0",
+      },
+      boxShadow: {
+        soft: "0 18px 40px rgba(0,0,0,0.12)",
       },
     },
   },
