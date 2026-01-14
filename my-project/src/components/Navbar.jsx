@@ -91,40 +91,82 @@ const Navbar = () => {
       {/* Mobile Dropdown Animated */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 14 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden mt-4 rounded-2xl bg-white/30 backdrop-blur-2xl
-            shadow-soft p-6 text-center border border-white/25"
-          >
-            <ul className="space-y-4 text-textDark font-medium">
-              {links.map((l) => (
-                <li key={l.id}>
-                  <a
-                    href={`#${l.id}`}
-                    onClick={() => setOpen(false)}
-                    className={`transition ${
-                      active === l.id ? "text-accent" : "hover:text-accent"
-                    }`}
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="https://drive.google.com/file/d/1Iz5hiTkJ_7M-edcNtooP2wsXX8OwKGtN/view?usp=drivesdk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-6 bg-textDark text-accent px-6 py-2 rounded-full text-sm shadow-lg"
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
               onClick={() => setOpen(false)}
+            />
+
+            {/* Menu Card (Responsive + Transition) */}
+            <motion.div
+              initial={{ opacity: 0, y: 22, scale: 0.96, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: 22, scale: 0.96, filter: "blur(6px)" }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="
+          fixed left-1/2 top-24 -translate-x-1/2 z-50
+          w-[92%] sm:w-[420px]
+          rounded-3xl
+          bg-white/70 backdrop-blur-2xl
+          border border-white/40
+          shadow-soft
+          p-7 sm:p-8
+          overflow-hidden
+        "
             >
-              Download CV
-            </a>
-          </motion.div>
+              {/* Close icon (optional) */}
+              <div className="flex justify-end -mt-1 mb-2">
+                <button
+                  onClick={() => setOpen(false)}
+                  className="text-textDark/70 hover:text-textDark transition"
+                  aria-label="Close menu"
+                >
+                  <FaTimes />
+                </button>
+              </div>
+
+              <ul className="space-y-4 text-textDark font-medium text-center">
+                {links.map((l) => (
+                  <li key={l.id}>
+                    <a
+                      href={`#${l.id}`}
+                      onClick={() => setOpen(false)}
+                      className={`block py-2 rounded-xl transition
+                  ${
+                    active === l.id
+                      ? "text-accent bg-white/30"
+                      : "hover:text-accent hover:bg-white/20"
+                  }`}
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://drive.google.com/file/d/1Iz5hiTkJ_7M-edcNtooP2wsXX8OwKGtN/view?usp=drivesdk"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="
+            block mt-6 text-center
+            bg-textDark text-accent
+            px-6 py-3 rounded-full text-sm
+            shadow-lg
+            hover:scale-[1.03] active:scale-[0.98]
+            transition
+          "
+              >
+                Download CV
+              </a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
