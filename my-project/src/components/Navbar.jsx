@@ -17,7 +17,7 @@ const Navbar = () => {
       { id: "projects", label: "Projects" },
       { id: "contact", label: "Contact" },
     ],
-    []
+    [],
   );
 
   // Ensure portal target exists (SSR safe)
@@ -98,8 +98,12 @@ const Navbar = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <img src={logo} alt="Logo" className="w-9 h-9 object-contain" />
+              <div className="flex items-center gap-3">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="w-11 h-11 object-contain shrink-0"
+                />
                 <span className="font-semibold text-textDark">Menu</span>
               </div>
 
