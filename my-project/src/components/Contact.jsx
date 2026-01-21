@@ -18,7 +18,7 @@ const Contact = () => {
         "service_bwmtgtq",
         "template_mhcrjwy",
         formRef.current,
-        "OxAEEhKwvf_TNfWPS"
+        "OxAEEhKwvf_TNfWPS",
       )
       .then(
         () => {
@@ -29,7 +29,7 @@ const Contact = () => {
         () => {
           setStatus("error");
           setLoading(false);
-        }
+        },
       );
   };
 
@@ -72,7 +72,7 @@ const Contact = () => {
               <FaGithub />
             </a>
             <a
-              href="www.linkedin.com/in/adela-amiri"
+              href="https://www.linkedin.com/in/adela-amiri"
               target="_blank"
               className="w-11 h-11 bg-[#0A66C2] text-white rounded-full flex items-center justify-center hover:scale-110 transition"
             >
