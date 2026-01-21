@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import realEstate from "../assets/realestate.svg";
-import furniture from "../assets/Furniture.svg";
-import courses from "../assets/Courses.svg";
+import realEstate from "../assets/Realestate.webp";
+import furniture from "../assets/Furniture.webp";
+import courses from "../assets/curses.webp";
 import { FaFigma } from "react-icons/fa";
 
 const projects = [
@@ -42,7 +42,13 @@ const Projects = () => {
             className="bg-white/15 backdrop-blur-2xl border border-white/20 rounded-3xl overflow-hidden shadow-soft glass-shine"
           >
             <div className="h-[420px] overflow-y-auto scrollbar-hide">
-              <img src={project.image} alt={project.title} className="w-full" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full min-h-full object-top"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div className="bg-white/15 px-6 py-4 flex items-center justify-between">
