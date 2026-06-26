@@ -3,6 +3,9 @@ import logo from "../assets/logo.svg";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
+import { cvUrl } from "../data/portfolio";
+
+const MotionDiv = motion.div;
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -62,7 +65,7 @@ const Navbar = () => {
   const MobileMenu = (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <MotionDiv
           className="fixed inset-0 z-[9999] flex items-center justify-center px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,7 +74,7 @@ const Navbar = () => {
           onClick={() => setOpen(false)}
         >
           {/* Overlay */}
-          <motion.div
+          <MotionDiv
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +82,7 @@ const Navbar = () => {
           />
 
           {/* Centered Card */}
-          <motion.div
+          <MotionDiv
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, y: 28, scale: 0.96, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
@@ -138,7 +141,7 @@ const Navbar = () => {
 
             {/* CV Button */}
             <a
-              href="https://drive.google.com/file/d/1Iz5hiTkJ_7M-edcNtooP2wsXX8OwKGtN/view?usp=drivesdk"
+              href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
@@ -153,8 +156,8 @@ const Navbar = () => {
             >
               Download CV
             </a>
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
       )}
     </AnimatePresence>
   );
@@ -193,7 +196,7 @@ const Navbar = () => {
 
           {/* Desktop CV */}
           <a
-            href="https://drive.google.com/file/d/1Iz5hiTkJ_7M-edcNtooP2wsXX8OwKGtN/view?usp=drivesdk"
+            href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block bg-textDark text-accent px-5 py-2 rounded-full text-sm

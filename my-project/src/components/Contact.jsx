@@ -2,6 +2,21 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import {
+  cardReveal,
+  sectionReveal,
+  slideFromLeft,
+  slideFromRight,
+} from "../utils/motion";
+
+const inputClass =
+  "w-full mt-2 px-5 py-3 rounded-xl bg-white/30 backdrop-blur border border-white/40 outline-none focus:bg-white/60 focus:shadow-[0_0_25px_rgba(15,63,58,0.4)] transition-all duration-300";
+
+const MotionSection = motion.section;
+const MotionDiv = motion.div;
+const MotionH2 = motion.h2;
+const MotionA = motion.a;
+const MotionButton = motion.button;
 
 const Contact = () => {
   const formRef = useRef();
@@ -34,17 +49,23 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-bgLight py-32 px-[6%] md:px-[10%]">
-      <h2 className="text-4xl text-primary text-center mb-24">Contact Me</h2>
+    <MotionSection
+      id="contact"
+      className="bg-bgLight py-32 px-[6%] md:px-[10%]"
+      variants={sectionReveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.18 }}
+    >
+      <MotionH2
+        className="text-4xl text-primary text-center mb-24"
+        variants={cardReveal}
+      >
+        Contact Me
+      </MotionH2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        {/* LEFT CONTENT */}
-        <motion.div
-          initial={{ x: -80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        <MotionDiv variants={slideFromLeft}>
           <p className="text-textDark leading-7 mb-10 max-w-md">
             I welcome inquiries regarding new opportunities, collaborations, or
             professional discussions. If you have a project in mind or would
@@ -62,134 +83,95 @@ const Contact = () => {
 
           <div className="h-[1px] bg-textDark/40 mt-6 mb-10 w-64" />
 
-          {/* SOCIAL */}
           <div className="flex gap-6 text-xl">
-            <a
+            <MotionA
               href="https://github.com/adelaamiri"
               target="_blank"
-              className="w-11 h-11 bg-black text-white rounded-full flex items-center justify-center hover:scale-110 transition"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4, scale: 1.08 }}
+              className="w-11 h-11 bg-black text-white rounded-full flex items-center justify-center transition"
+              aria-label="GitHub"
             >
               <FaGithub />
-            </a>
-            <a
+            </MotionA>
+            <MotionA
               href="https://www.linkedin.com/in/adela-amiri"
               target="_blank"
-              className="w-11 h-11 bg-[#0A66C2] text-white rounded-full flex items-center justify-center hover:scale-110 transition"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4, scale: 1.08 }}
+              className="w-11 h-11 bg-[#0A66C2] text-white rounded-full flex items-center justify-center transition"
+              aria-label="LinkedIn"
             >
               <FaLinkedinIn />
-            </a>
-            <a
+            </MotionA>
+            <MotionA
               href="https://wa.me/"
               target="_blank"
-              className="w-11 h-11 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:scale-110 transition"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4, scale: 1.08 }}
+              className="w-11 h-11 bg-[#25D366] text-white rounded-full flex items-center justify-center transition"
+              aria-label="WhatsApp"
             >
               <FaWhatsapp />
-            </a>
+            </MotionA>
           </div>
-        </motion.div>
+        </MotionDiv>
 
-        {/* RIGHT FORM */}
-        <motion.div
-          initial={{ x: 80, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="
-            w-full
-            bg-white/20 backdrop-blur-2xl
-            border border-white/30
-            rounded-3xl p-10 shadow-2xl
-          "
+        <MotionDiv
+          variants={slideFromRight}
+          whileHover={{ y: -8 }}
+          className="w-full bg-white/20 backdrop-blur-2xl border border-white/30 rounded-3xl p-10 shadow-2xl glass-shine reveal-edge"
         >
           <form ref={formRef} onSubmit={sendEmail} className="space-y-7">
-            {/* Name */}
             <div>
               <label className="text-sm text-textDark">Name</label>
-              <input
-                type="text"
-                name="name"
-                required
-                className="
-                  w-full mt-2 px-5 py-3 rounded-xl
-                  bg-white/30 backdrop-blur
-                  border border-white/40
-                  outline-none
-                  focus:bg-white/60
-                  focus:shadow-[0_0_25px_rgba(15,63,58,0.4)]
-                  transition-all duration-300
-                "
-              />
+              <input type="text" name="name" required className={inputClass} />
             </div>
 
-            {/* Email */}
             <div>
               <label className="text-sm text-textDark">Email</label>
               <input
                 type="email"
                 name="email"
                 required
-                className="
-                  w-full mt-2 px-5 py-3 rounded-xl
-                  bg-white/30 backdrop-blur
-                  border border-white/40
-                  outline-none
-                  focus:bg-white/60
-                  focus:shadow-[0_0_25px_rgba(15,63,58,0.4)]
-                  transition-all duration-300
-                "
+                className={inputClass}
               />
             </div>
 
-            {/* Message */}
             <div>
               <label className="text-sm text-textDark">Message</label>
               <textarea
                 name="message"
                 rows="5"
                 required
-                className="
-                  w-full mt-2 px-5 py-3 rounded-xl
-                  bg-white/30 backdrop-blur
-                  border border-white/40
-                  outline-none resize-none
-                  focus:bg-white/60
-                  focus:shadow-[0_0_25px_rgba(15,63,58,0.4)]
-                  transition-all duration-300
-                "
+                className={`${inputClass} resize-none`}
               />
             </div>
 
-            {/* Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
+            <MotionButton
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               disabled={loading}
               type="submit"
-              className="
-                w-full py-3 rounded-full
-                bg-[#0F3F3A] text-[#C89B5A]
-                font-medium tracking-wide
-                disabled:opacity-50
-              "
+              className="w-full py-3 rounded-full bg-[#0F3F3A] text-[#C89B5A] font-medium tracking-wide disabled:opacity-50"
             >
               {loading ? "Sending..." : "Send Message"}
-            </motion.button>
+            </MotionButton>
 
-            {/* Status */}
             {status === "success" && (
-              <p className="text-green-600 text-center mt-2">
-                ✅ Message sent successfully
+              <p className="text-green-700 text-center mt-2">
+                Message sent successfully.
               </p>
             )}
             {status === "error" && (
-              <p className="text-red-600 text-center mt-2">
-                ❌ Something went wrong
+              <p className="text-red-700 text-center mt-2">
+                Something went wrong. Please try again.
               </p>
             )}
           </form>
-        </motion.div>
+        </MotionDiv>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 
