@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaFigma } from "react-icons/fa";
+import { FaExternalLinkAlt, FaFigma } from "react-icons/fa";
 import { projects } from "../data/portfolio";
 import { cardReveal, sectionReveal, staggerContainer } from "../utils/motion";
 
@@ -48,30 +48,68 @@ const Projects = () => {
             whileHover={{ y: -10, scale: 1.01 }}
             className="group bg-white/15 backdrop-blur-2xl border border-white/20 rounded-3xl overflow-hidden shadow-soft glass-shine reveal-edge"
           >
-            <div className="h-[320px] overflow-y-auto scrollbar-hide bg-white/10">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full min-h-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+            {project.image ? (
+              <a
+                href={project.liveUrl || project.figma}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-[320px] overflow-y-auto scrollbar-hide bg-white/10"
+                aria-label={`Open ${project.title}`}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full min-h-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            ) : (
+              <div className="relative flex h-[320px] items-center justify-center overflow-hidden bg-gradient-to-br from-white/20 via-primary/25 to-accent/25">
+                <div className="absolute inset-0 noise-overlay opacity-40" />
+                <div className="relative z-10 px-8 text-center">
+                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/60">
+                    Live Project
+                  </p>
+                  <h3 className="text-3xl font-semibold text-white">
+                    {project.title}
+                  </h3>
+                  <p className="mt-4 text-sm text-white/75">
+                    {new URL(project.liveUrl).hostname}
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="p-6">
               <div className="mb-4 flex items-center justify-between gap-4">
                 <span className="rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium text-accent">
                   {project.category}
                 </span>
-                <a
-                  href={project.figma}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent text-xl hover:scale-110 transition"
-                  aria-label={`Open ${project.title} in Figma`}
-                >
-                  <FaFigma />
-                </a>
+                <div className="flex items-center gap-4">
+                  {project.figma && (
+                    <a
+                      href={project.figma}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent text-xl hover:scale-110 transition"
+                      aria-label={`Open ${project.title} in Figma`}
+                    >
+                      <FaFigma />
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent text-lg hover:scale-110 transition"
+                      aria-label={`Open ${project.title} website`}
+                    >
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
+                </div>
               </div>
 
               <h3 className="text-xl font-semibold text-white">
